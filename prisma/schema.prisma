@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Corretor {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+
+  cotacao Cotacao[]
+
+  redesReferenciadas RedeReferenciada[]
+
+  @@map("corretor")
+}
+
+model RedesReferenciadasPlanos {
+  id Int @id @default(autoincrement())
+
+  plano              Plano            @relation(fields: [planoId], references: [id])
+  redeReferenciada   RedeReferenciada @relation(fields: [redeReferenciadaId], references: [id])
+  planoId            String           @map("plano_id")
+  redeReferenciadaId String           @map("rede_referenciada_id")
+}
+
+model Plano {
+  id                       String                     @id @default(uuid())
+  name                     String
+  RedesReferenciadasPlanos RedesReferenciadasPlanos[]
+  Cotacao                  Cotacao[]
+
+  @@map("planos")
+}
+
+model RedeReferenciada {
+  id                       String                     @id @default(uuid())
+  razao_social             String
+  telefone                 String
+  endereco                 String
+  cro                      String?
+  bairro                   String
+  cidade                   String
+  estado                   String
+  cep                      String?
+  User                     Corretor?                  @relation(fields: [corretorId], references: [id])
+  corretorId               String?
+  RedesReferenciadasPlanos RedesReferenciadasPlanos[]
+
+  @@map("rede_referenciada")
+}
+
+model Dependente {
+  id            String       @id @default(uuid())
+  nome          String
+  idade         Int
+  preco         Int?
+  Dependentes   Dependentes? @relation(fields: [dependentesId], references: [id])
+  dependentesId String?
+}
+
+model Dependentes {
+  id         String       @id @default(uuid())
+  dependente Dependente[]
+  Cliente    Cliente?     @relation(fields: [clienteId], references: [id])
+  clienteId  String?
+
+  @@map("dependentes")
+}
+
+model Cliente {
+  id          String        @id @default(uuid())
+  nome        String
+  documento   String
+  preco       Int?
+  cotacoes    Cotacao[]
+  dependentes Dependentes[]
+
+  @@map("cliente")
+}
+
+model Modalidade {
+  id      String    @id @default(uuid())
+  name    String
+  Cotacao Cotacao[]
+}
+
+model Cotacao {
+  id           String     @id @default(uuid())
+  Corretor     Corretor?  @relation(fields: [corretorId], references: [id])
+  corretorId   String?
+  Plano        Plano?     @relation(fields: [planoId], references: [id])
+  planoId      String?
+  Cliente      Cliente?   @relation(fields: [clienteId], references: [id])
+  clienteId    String?
+  createdAt    DateTime   @default(now()) @map("created_at")
+  totalPrice   Int        @map("total_price")
+  modalidade   Modalidade @relation(fields: [modalidadeId], references: [id])
+  modalidadeId String
+
+  @@map("cotacao")
+}

@@ -1,11 +1,11 @@
 version: '3'
 
 services: 
-  cota-ai:
+  api-cota-ai:
     image: bitnami/postgresql:latest
     ports:
       - 5432:5432
     environment:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
-      - POSTGRESQL_DATABASE=cota-ai
+      - POSTGRESQL_DATABASE=api-cota-ai
