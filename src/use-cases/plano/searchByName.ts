@@ -1,8 +1,9 @@
 import { PlanoRepository } from "@/repositories/planoRepository"
+import { noPlanoFoundError } from "../errors/no-plano-found-error"
 
 
 interface searchByNamePlanoUseCase {
-  name: string
+  query: string
 }
 
 export class SearchByNamePlanoUseCase {
@@ -12,8 +13,12 @@ export class SearchByNamePlanoUseCase {
 
   }
 
-  async execute({ name }: searchByNamePlanoUseCase) {
-    const plano = await this.planoRepository.searchByName(name)
+  async execute({ query }: searchByNamePlanoUseCase) {
+    const plano = await this.planoRepository.searchByQueryName(query)
+
+    if (!plano) {
+      throw new noPlanoFoundError()
+    }
 
     return plano
   }
