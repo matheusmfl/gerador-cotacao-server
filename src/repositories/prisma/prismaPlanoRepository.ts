@@ -4,14 +4,18 @@ import { PlanoRepository } from "../planoRepository";
 
 
 export class PrismaPlanoRepository implements PlanoRepository {
+  async findBySlug(slug: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
+    const plano = await prisma.plano.findFirst({
+      where: { slug }
+    })
+
+    return plano
+  }
+
   async searchByQueryName(query: string) {
     console.log(query)
     const plano = await prisma.plano.findFirst({
-      where: {
-        name: {
-          contains: query
-        }
-      }
+      where: { slug: query }
     })
     return plano
   }
@@ -21,6 +25,8 @@ export class PrismaPlanoRepository implements PlanoRepository {
 
     return plano
   }
+
+
 
 
 }

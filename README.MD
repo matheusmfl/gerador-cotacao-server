@@ -25,6 +25,7 @@ Cota-Ai
 - [ x ] Deve ser possível se cadastrar ( Cadastrar corretor );
 
 - [ x ] Deve ser possível cadastrar um plano  
+- [ x ] Não deve ser possível cadastrar o mesmo plano 2 vezes
 - [ ] Deve ser possível encontrar plano pelo slug
 - [ ] Deve ser possível Editar um plano  
 - [ ] Deve ser possível Deletar um plano  

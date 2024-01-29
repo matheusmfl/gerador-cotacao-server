@@ -15,6 +15,7 @@ export async function searchByNamePlano(req: FastifyRequest, res: FastifyReply) 
   const { query } = registerPlanoBodySchema.parse(req.query)
 
 
+
   try {
     const planoRepository = new PrismaPlanoRepository()
     const searchByNameUseCase = new SearchByNamePlanoUseCase(planoRepository)

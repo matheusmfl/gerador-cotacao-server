@@ -1,5 +1,6 @@
 import { PrismaPlanoRepository } from "@/repositories/prisma/prismaPlanoRepository"
 import { Slug } from "@/services/slug-generator"
+import { planoAlreadyExistsError } from "@/use-cases/errors/plano-already-exists-error"
 import { RegisterPlanoUseCase } from "@/use-cases/plano/registerPlano"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
@@ -29,7 +30,9 @@ export async function registerPlano(req: FastifyRequest, res: FastifyReply) {
       slug: slug.value
     })
   } catch (err) {
-    throw err
+    if (err instanceof planoAlreadyExistsError) {
+      return res.status(409).send({ message: err.message });
+    }
   }
 
   return res.status(201).send()

@@ -1,4 +1,5 @@
 import { PlanoRepository } from "@/repositories/planoRepository"
+import { planoAlreadyExistsError } from "../errors/plano-already-exists-error"
 
 
 interface registerPlanoUseCase {
@@ -15,6 +16,13 @@ export class RegisterPlanoUseCase {
   }
 
   async execute({ name, slug }: registerPlanoUseCase) {
+
+    const planoWithSameSlug = await this.planoRepository.findBySlug(slug)
+
+    if (planoWithSameSlug) {
+      throw new planoAlreadyExistsError()
+    }
+
     await this.planoRepository.create({
       name,
       slug
