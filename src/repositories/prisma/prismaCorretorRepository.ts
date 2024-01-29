@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from '@prisma/client'
-import { CorretorRepository } from "../corretor-repositorie";
+import { CorretorRepository } from "../corretorRepository";
+
 
 export class PrismaCorretorRepository implements CorretorRepository {
   async create(data: Prisma.CorretorCreateInput) {
@@ -8,8 +9,6 @@ export class PrismaCorretorRepository implements CorretorRepository {
 
     return corretor
   }
-
-
 
 
 }

@@ -1,4 +1,4 @@
-import { CorretorRepository } from "@/repositories/corretor-repositorie"
+import { CorretorRepository } from "@/repositories/corretorRepository"
 
 
 interface registerCorretorUseCaseRequest {

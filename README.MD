@@ -2,7 +2,7 @@
 
 Cota-Ai
 
-  // async teste({ id }: { id: string }) {
+  //  async teste({ id }: { id: string }) {
   //   const teste = await prisma.plano.findFirst({
   //     where: { id },
   //     include: {
@@ -23,10 +23,25 @@ Cota-Ai
 ## RFs (Requisitos funcionais)
 
 - [ x ] Deve ser possível se cadastrar ( Cadastrar corretor );
+
 - [ ] Deve ser possível cadastrar um plano  
+- [ ] Deve ser possível Editar um plano  
+- [ ] Deve ser possível Deletar um plano  
+- [ ] Deve ser possível Ler um plano  
+
 - [ ] Deve ser possível cadastrar um hospital
-- [ ] Deve ser possível se autenticar;
+- [ ] Deve ser possível editar um hospital
+- [ ] Deve ser possível deletar um hospital
+- [ ] Deve ser possível ler um hospital
+
+- [ ] Deve ser possível se autenticar (corretor);
+
 - [ ] Deve ser possível cadastrar uma rede referenciada;
+- [ ] Deve ser possível Editar uma rede referenciada;
+- [ ] Deve ser possível remover uma rede referenciada;
+- [ ] Deve ser possível Ler uma rede referenciada;
+
+
 - [ ] Deve ser possível criar uma cotação
 - [ ] Deve ser possível Cadastrar Dependentes do Cliente
 - [ ] Deve ser possível Cadastrar dependente em Dependentes do cliente
