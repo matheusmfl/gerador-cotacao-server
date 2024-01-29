@@ -1,29 +1,30 @@
 import { PrismaPlanoRepository } from "@/repositories/prisma/prismaPlanoRepository"
 import { noPlanoFoundError } from "@/use-cases/errors/no-plano-found-error"
-import { SearchByNamePlanoUseCase } from "@/use-cases/plano/searchByName"
+import { SearchBySlugParamsUseCase } from "@/use-cases/plano/searchBySlugParams"
+
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 
 
 
-export async function searchByNamePlano(req: FastifyRequest, res: FastifyReply) {
+export async function searchBySlugParams(req: FastifyRequest, res: FastifyReply) {
 
   const registerPlanoBodySchema = z.object({
-    query: z.string(),
+    slug: z.string(),
   })
 
-  const { query } = registerPlanoBodySchema.parse(req.query)
+  const { slug } = registerPlanoBodySchema.parse(req.params)
 
 
 
   try {
     const planoRepository = new PrismaPlanoRepository()
-    const searchByNameUseCase = new SearchByNamePlanoUseCase(planoRepository)
+    const searchByNameUseCase = new SearchBySlugParamsUseCase(planoRepository)
 
 
 
     const plano = await searchByNameUseCase.execute({
-      query
+      slug
     })
 
 

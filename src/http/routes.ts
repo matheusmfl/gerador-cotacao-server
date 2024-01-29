@@ -1,8 +1,9 @@
 import { FastifyInstance } from "fastify";
 import { registerCorretor } from "./controllers/registerCorretor";
 import { registerPlano } from "./controllers/registerPlano";
+import { searchBySlugParams } from "./controllers/searchBySlugParams";
 
-import { searchByNamePlano } from "./controllers/searchByNamePlano";
+
 
 
 export async function appRoutes(app: FastifyInstance) {
@@ -12,6 +13,6 @@ export async function appRoutes(app: FastifyInstance) {
 
   // Plano
   app.post('/plano', registerPlano)
-  app.get('/plano/search', searchByNamePlano)
+  app.get('/plano/search/:slug', searchBySlugParams)
 
 }

@@ -12,10 +12,10 @@ export class PrismaPlanoRepository implements PlanoRepository {
     return plano
   }
 
-  async searchByQueryName(query: string) {
-    console.log(query)
+  async searchBySlugParams(slug: string) {
+
     const plano = await prisma.plano.findFirst({
-      where: { slug: query }
+      where: { slug }
     })
     return plano
   }
