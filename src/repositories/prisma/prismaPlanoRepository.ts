@@ -4,10 +4,13 @@ import { PlanoRepository } from "../planoRepository";
 
 
 export class PrismaPlanoRepository implements PlanoRepository {
-  async searchByName(query: string) {
+  async searchByName(name: string) {
+    console.log(name)
     const plano = await prisma.plano.findFirst({
       where: {
-        name: query
+        name: {
+          contains: name
+        }
       }
     })
     return plano

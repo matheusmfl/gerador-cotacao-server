@@ -38,6 +38,7 @@ model Plano {
   id      String    @id @default(uuid())
   name    String
   cotacao Cotacao[]
+  slug    String
 
   hospitaisPlano HospitaisPlano[]
   hospital       Hospital?        @relation(fields: [hospitalId], references: [id])

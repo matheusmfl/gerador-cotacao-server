@@ -12,6 +12,6 @@ export async function appRoutes(app: FastifyInstance) {
 
   // Plano
   app.post('/plano', registerPlano)
-  app.get('/plano', searchByNamePlano)
+  app.get('/plano/search', searchByNamePlano)
 
 }

@@ -3,23 +3,30 @@ import { SearchByNamePlanoUseCase } from "@/use-cases/plano/searchByName"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 
+
+
 export async function searchByNamePlano(req: FastifyRequest, res: FastifyReply) {
 
   const registerPlanoBodySchema = z.object({
-    query: z.string().min(3),
+    name: z.string(),
   })
 
-  const { query } = registerPlanoBodySchema.parse(req.body)
+  const { name } = registerPlanoBodySchema.parse(req.query)
+  console.log(name)
 
   try {
     const planoRepository = new PrismaPlanoRepository()
     const searchByNameUseCase = new SearchByNamePlanoUseCase(planoRepository)
 
-    await searchByNameUseCase.execute({
-      query
+
+
+    const plano = await searchByNameUseCase.execute({
+      name
     })
+
+    return res.status(201).send(plano)
   } catch (err) {
-    throw err
+    console.error(err)
   }
 
   return res.status(201).send()

@@ -2,7 +2,7 @@ import { PlanoRepository } from "@/repositories/planoRepository"
 
 
 interface searchByNamePlanoUseCase {
-  query: string
+  name: string
 }
 
 export class SearchByNamePlanoUseCase {
@@ -12,9 +12,10 @@ export class SearchByNamePlanoUseCase {
 
   }
 
-  async execute({ query }: searchByNamePlanoUseCase) {
-    await this.planoRepository.searchByName(query)
-  }
+  async execute({ name }: searchByNamePlanoUseCase) {
+    const plano = await this.planoRepository.searchByName(name)
 
+    return plano
+  }
 
 }
