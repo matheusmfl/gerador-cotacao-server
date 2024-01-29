@@ -24,7 +24,7 @@ Cota-Ai
 
 - [ x ] Deve ser possível se cadastrar ( Cadastrar corretor );
 
-- [ ] Deve ser possível cadastrar um plano  
+- [ x ] Deve ser possível cadastrar um plano  
 - [ ] Deve ser possível Editar um plano  
 - [ ] Deve ser possível Deletar um plano  
 - [ ] Deve ser possível Ler um plano  

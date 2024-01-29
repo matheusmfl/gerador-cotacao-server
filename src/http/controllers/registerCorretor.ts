@@ -1,5 +1,5 @@
 import { PrismaCorretorRepository } from "@/repositories/prisma/prismaCorretorRepository"
-import { RegisterCorretorUseCase } from "@/use-cases/registerCorretor"
+import { RegisterCorretorUseCase } from "@/use-cases/corretor/registerCorretor"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 

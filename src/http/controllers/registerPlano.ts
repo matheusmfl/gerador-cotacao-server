@@ -1,5 +1,5 @@
 import { PrismaPlanoRepository } from "@/repositories/prisma/prismaPlanoRepository"
-import { RegisterPlanoUseCase } from "@/use-cases/registerPlano"
+import { RegisterPlanoUseCase } from "@/use-cases/plano/registerPlano"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 
