@@ -15,11 +15,13 @@ export class RegisterCorretorUseCase {
   }
 
   async execute({ name, email, password }: registerCorretorUseCaseRequest) {
-    await this.corretorRepository.create({
+    const user = await this.corretorRepository.create({
       name,
       email,
       password
     })
+
+    return { user }
   }
 
 
