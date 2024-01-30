@@ -23,10 +23,12 @@ export class RegisterPlanoUseCase {
       throw new planoAlreadyExistsError()
     }
 
-    await this.planoRepository.create({
+    const plano = await this.planoRepository.create({
       name,
       slug
     })
+
+    return { plano }
   }
 
 
