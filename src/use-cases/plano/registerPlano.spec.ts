@@ -14,6 +14,7 @@ describe('RegisterPlano UseCase', () => {
     const { plano } = await sut.execute({
       name: 'jhonDoe',
       slug: 'jhondoe'
+
     })
     expect(plano.slug).toEqual(expect.any(String))
   })

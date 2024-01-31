@@ -42,8 +42,23 @@ export class InMemoryPlano implements PlanoRepository {
 
     return plano
   }
-  updatePlano(props: IUpdatedPlano, args: Prisma.PlanoUpdateArgs<DefaultArgs>): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; }> {
-    throw new Error("Method not implemented.");
+
+
+  async updatePlano(props: IUpdatedPlano, args: Prisma.PlanoUpdateArgs<DefaultArgs>) {
+
+    const index = await this.items.findIndex((item) => item.id === props.id)
+
+    let plano = this.items[index]
+
+
+    plano = {
+      id: props.id,
+      name: args.data.name as string,
+      slug: args.data.slug as string,
+      hospitalId: null
+    }
+
+    return plano
   }
   findById(id: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
     throw new Error("Method not implemented.");
