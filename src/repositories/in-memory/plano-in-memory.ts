@@ -6,8 +6,24 @@ export class InMemoryPlano implements PlanoRepository {
 
   public items: Plano[] = []
 
-  searchBySlugParams(slug: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
-    throw new Error("Method not implemented.");
+  async searchBySlugParams(slug: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
+
+    this.items.push({
+      name: 'jhonDoe',
+      slug: 'jhondoe',
+      id: 'idQlq',
+      hospitalId: ''
+    })
+
+    const plano: Plano | undefined = await this.items.find(item => {
+      item.slug = slug
+    })
+
+    if (!plano) {
+      return null
+    }
+
+    return plano
   }
   async create(data: Prisma.PlanoCreateInput) {
     const plano = {
@@ -18,6 +34,7 @@ export class InMemoryPlano implements PlanoRepository {
     }
 
     this.items.push(plano)
+    console.log(this.items)
 
     return plano
   }

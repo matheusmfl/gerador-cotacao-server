@@ -29,6 +29,8 @@ export async function registerPlano(req: FastifyRequest, res: FastifyReply) {
       name,
       slug: slug.value
     })
+
+
   } catch (err) {
     if (err instanceof planoAlreadyExistsError) {
       return res.status(409).send({ message: err.message });

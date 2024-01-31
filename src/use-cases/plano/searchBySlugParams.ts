@@ -20,7 +20,7 @@ export class SearchBySlugParamsUseCase {
       throw new noPlanoFoundError()
     }
 
-    return plano
+    return { plano }
   }
 
 }
