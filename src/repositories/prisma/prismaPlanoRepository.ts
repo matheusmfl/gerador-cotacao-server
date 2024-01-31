@@ -4,6 +4,11 @@ import { IFindByIdProps, IUpdatedPlano, PlanoRepository } from "../planoReposito
 
 
 export class PrismaPlanoRepository implements PlanoRepository {
+  async findAll(): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; }[]> {
+    const planos = await prisma.plano.findMany()
+
+    return planos
+  }
   async findById({ id, extraWhere }: IFindByIdProps, args?: Omit<Prisma.PlanoFindUniqueArgs, "where">) {
     const plano = await prisma.plano.findUnique({
       where: { id, ...extraWhere },

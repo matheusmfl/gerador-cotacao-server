@@ -45,7 +45,6 @@ describe('RegisterPlano UseCase', () => {
 
   it('should not be able to register with a same slug twice', async () => {
 
-
     const name = 'Bradesco 23'
 
     const slug = Slug.createFromText(name).value

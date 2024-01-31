@@ -15,4 +15,5 @@ export interface PlanoRepository {
   findBySlug(slug: string): Promise<Plano | null>
   updatePlano(props: IUpdatedPlano, args: Omit<Prisma.PlanoUpdateArgs, 'where'>): Promise<Plano>
   deletePlano(id: string): Promise<void>
+  findAll(): Promise<Plano[]>
 }

@@ -5,6 +5,7 @@ import { registerPlano } from "./controllers/registerPlano";
 import { updatePlano } from "./controllers/updatePlano";
 import { deletePlano } from "./controllers/deletePlano";
 import { SearchById } from "./controllers/searchPlanoById";
+import { FindAllPlanos } from "./controllers/findAllPlanos";
 
 
 
@@ -19,5 +20,6 @@ export async function appRoutes(app: FastifyInstance) {
   app.get('/plano/search/:id', SearchById)
   app.put('/plano/update/:id', updatePlano)
   app.delete('/plano/delete/:id', deletePlano)
+  app.get('/planos', FindAllPlanos)
 
 }
