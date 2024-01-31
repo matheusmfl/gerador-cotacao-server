@@ -7,6 +7,12 @@ export class InMemoryPlano implements PlanoRepository {
 
   public items: Plano[] = []
 
+  async findAll(): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; }[]> {
+    const planos = this.items
+    return planos
+  }
+
+
   async deletePlano(id: string): Promise<void> {
     const planoIndex = await this.items.findIndex((item) => item.id === id);
 
