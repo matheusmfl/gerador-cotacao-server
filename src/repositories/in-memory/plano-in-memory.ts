@@ -10,7 +10,7 @@ export class InMemoryPlano implements PlanoRepository {
 
 
     const plano: Plano | undefined = await this.items.find(item => {
-      item.slug = slug
+      return item.slug === slug
     })
 
     if (!plano) {
