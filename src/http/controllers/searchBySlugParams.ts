@@ -1,6 +1,5 @@
-import { PrismaPlanoRepository } from "@/repositories/prisma/prismaPlanoRepository"
 import { noPlanoFoundError } from "@/use-cases/errors/no-plano-found-error"
-import { SearchBySlugParamsUseCase } from "@/use-cases/plano/searchBySlugParams"
+import { makeSearchBySlugPlano } from "@/use-cases/factories/make-search-by-slug-plano"
 
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
@@ -18,12 +17,12 @@ export async function searchBySlugParams(req: FastifyRequest, res: FastifyReply)
 
 
   try {
-    const planoRepository = new PrismaPlanoRepository()
-    const searchByNameUseCase = new SearchBySlugParamsUseCase(planoRepository)
+
+    const searchBySlugUseCase = makeSearchBySlugPlano()
 
 
 
-    const plano = await searchByNameUseCase.execute({
+    const plano = await searchBySlugUseCase.execute({
       slug
     })
 

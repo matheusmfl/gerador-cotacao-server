@@ -1,5 +1,4 @@
-import { PrismaCorretorRepository } from "@/repositories/prisma/prismaCorretorRepository"
-import { RegisterCorretorUseCase } from "@/use-cases/corretor/registerCorretor"
+import { makeRegisterCorretor } from "@/use-cases/factories/make-register-corretor-use-case"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 
@@ -14,8 +13,8 @@ export async function registerCorretor(req: FastifyRequest, res: FastifyReply) {
   const { name, email, password } = registerBodySchema.parse(req.body)
 
   try {
-    const corretorRepository = new PrismaCorretorRepository()
-    const registerCorretorUseCase = new RegisterCorretorUseCase(corretorRepository)
+
+    const registerCorretorUseCase = makeRegisterCorretor()
 
     await registerCorretorUseCase.execute({
       name, email, password

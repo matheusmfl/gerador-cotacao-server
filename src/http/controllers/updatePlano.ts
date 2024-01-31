@@ -1,6 +1,5 @@
-import { PrismaPlanoRepository } from "@/repositories/prisma/prismaPlanoRepository"
 import { noPlanoFoundError } from "@/use-cases/errors/no-plano-found-error"
-import { UpdatePlanoUseCase } from "@/use-cases/plano/updatePlano"
+import { makeUpdatePlanoUseCase } from "@/use-cases/factories/make-update-plano"
 
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
@@ -28,8 +27,8 @@ export async function updatePlano(req: FastifyRequest, res: FastifyReply) {
 
     const { name } = namePlanoBodySchema.parse(req.body)
 
-    const planoRepository = new PrismaPlanoRepository()
-    const updatePlanoUseCase = new UpdatePlanoUseCase(planoRepository)
+
+    const updatePlanoUseCase = makeUpdatePlanoUseCase()
 
 
     const plano = await updatePlanoUseCase.execute({

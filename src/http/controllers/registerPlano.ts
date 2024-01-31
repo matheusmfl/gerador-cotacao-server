@@ -1,7 +1,6 @@
-import { PrismaPlanoRepository } from "@/repositories/prisma/prismaPlanoRepository"
 import { Slug } from "@/services/slug-generator"
 import { planoAlreadyExistsError } from "@/use-cases/errors/plano-already-exists-error"
-import { RegisterPlanoUseCase } from "@/use-cases/plano/registerPlano"
+import { makerRegisterPlano } from "@/use-cases/factories/make-register-plano-use-case"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 
@@ -18,9 +17,7 @@ export async function registerPlano(req: FastifyRequest, res: FastifyReply) {
 
 
   try {
-
-    const planoRepository = new PrismaPlanoRepository()
-    const registerPlanoUseCase = new RegisterPlanoUseCase(planoRepository)
+    const registerPlanoUseCase = makerRegisterPlano()
 
     const slug = Slug.createFromText(name)
     console.log(slug)
