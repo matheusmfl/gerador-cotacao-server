@@ -1,11 +1,10 @@
 import { PlanoRepository } from "@/repositories/planoRepository"
 import { Slug } from "@/services/slug-generator"
-import { Prisma } from "@prisma/client"
+
 
 interface updatePlanoUseCase {
   name: string
   id: string
-
 }
 
 export class UpdatePlanoUseCase {
@@ -19,20 +18,14 @@ export class UpdatePlanoUseCase {
 
     const newSlug = Slug.createFromText(name).value
 
-    // @ts-ignore
-    const updateArgs: Prisma.PlanoUpdateArgs = {
-      data: {
-        name,
-        slug: newSlug,
-
-      },
-    };
-
-
-
     const newPlano = await this.planoRepository.updatePlano({
       id
-    }, updateArgs
+    }, {
+      data: {
+        name,
+        slug: newSlug
+      }
+    }
     )
 
     return newPlano

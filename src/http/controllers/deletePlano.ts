@@ -1,3 +1,4 @@
+import { noPlanoFoundError } from "@/use-cases/errors/no-plano-found-error"
 import { makeDeletePlanoUseCase } from "@/use-cases/factories/make-delete-plano"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
@@ -8,12 +9,15 @@ export async function deletePlano(req: FastifyRequest, res: FastifyReply) {
   const deletePlanoParamsSchema = z.object({
     id: z.string()
   })
+  const { id } = deletePlanoParamsSchema.parse(req.params)
+  console.log(id)
+  console.log("OLAA")
 
 
 
   try {
 
-    const { id } = deletePlanoParamsSchema.parse(req.params)
+
     const deletePlanoUseCase = makeDeletePlanoUseCase()
 
     await deletePlanoUseCase.execute({
@@ -21,7 +25,10 @@ export async function deletePlano(req: FastifyRequest, res: FastifyReply) {
     })
 
   } catch (err) {
-    throw err
+    if (err instanceof noPlanoFoundError) {
+      return res.status(404).send({ message: err.message })
+    }
+    return res.status(500).send()
 
   }
 

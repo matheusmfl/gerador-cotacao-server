@@ -1,14 +1,20 @@
 import { Plano, Prisma } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime/library";
-import { IUpdatedPlano, PlanoRepository } from "../planoRepository";
+import { IFindByIdProps, IUpdatedPlano, PlanoRepository } from "../planoRepository";
 
 export class InMemoryPlano implements PlanoRepository {
 
 
   public items: Plano[] = []
 
-  deletePlano(id: string): Promise<void> {
-    throw new Error("Method not implemented.");
+  async deletePlano(id: string): Promise<void> {
+    const planoIndex = await this.items.findIndex((item) => item.id === id);
+
+    if (planoIndex !== -1) {
+      this.items.splice(planoIndex, 1);
+    }
+
+    return
   }
 
   async searchPlanoById(id: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
@@ -54,7 +60,6 @@ export class InMemoryPlano implements PlanoRepository {
     const plano: Plano | undefined = await this.items.find((item) => item.slug === slug)
 
     if (!plano) {
-      console.log('Nao achei o plano :/')
       return null
     }
 
@@ -78,8 +83,16 @@ export class InMemoryPlano implements PlanoRepository {
 
     return plano
   }
-  findById(id: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
-    throw new Error("Method not implemented.");
+  async findById({ id }: IFindByIdProps, args: Omit<Prisma.PlanoFindUniqueArgs, 'where'>): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
+    const plano: Plano | undefined = await this.items.find(item => {
+      return item.id === id
+    })
+
+    if (!plano) {
+      return null
+    }
+
+    return plano
   }
 
 }

@@ -1,12 +1,12 @@
 import { noPlanoFoundError } from "@/use-cases/errors/no-plano-found-error"
-import { makeSearchBySlugPlano } from "@/use-cases/factories/make-search-by-slug-plano"
+import { makeSearchById } from "@/use-cases/factories/make-search-by-slug-plano"
 
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 
 
 
-export async function searchPlanoById(req: FastifyRequest, res: FastifyReply) {
+export async function SearchById(req: FastifyRequest, res: FastifyReply) {
 
   const registerPlanoBodySchema = z.object({
     id: z.string(),
@@ -14,17 +14,19 @@ export async function searchPlanoById(req: FastifyRequest, res: FastifyReply) {
 
   const { id } = registerPlanoBodySchema.parse(req.params)
 
+  console.log(id)
 
 
   try {
 
-    const searchBySlugUseCase = makeSearchBySlugPlano()
+    const searchById = makeSearchById()
 
 
 
-    const plano = await searchBySlugUseCase.execute({
+    const plano = await searchById.execute({
       id
     })
+
 
 
 

@@ -9,7 +9,7 @@ interface deletePlanoUseCaseProps {
 }
 
 
-export class DeletePlanoUseCase {
+export class DeletePlano {
   constructor(
     private planoRepository: PlanoRepository
   ) {
@@ -18,7 +18,7 @@ export class DeletePlanoUseCase {
 
   async execute({ id }: deletePlanoUseCaseProps): Promise<void> {
 
-    const plano = await this.planoRepository.searchPlanoById(id)
+    const plano = await this.planoRepository.findById({ id }, {})
 
     if (!plano) {
       throw new noPlanoFoundError()

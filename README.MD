@@ -28,7 +28,8 @@ Cota-Ai
 - [ x ] Não deve ser possível cadastrar o mesmo plano 2 vezes
 - [ x ] Deve ser possível encontrar plano pelo slug
 - [ x ] Deve ser possível Editar um plano  
-- [ ] Deve ser possível Deletar um plano  
+- [ ] Deve ser possível pegar todos os planos
+- [ x ] Deve ser possível Deletar um plano  
 - [ x ] Deve ser possível Ler um plano pelo nome
 
 - [ ] Deve ser possível cadastrar um hospital

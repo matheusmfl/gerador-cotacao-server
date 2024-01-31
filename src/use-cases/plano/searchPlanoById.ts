@@ -6,7 +6,7 @@ interface searchPlanoByIdUseCaseParams {
   id: string
 }
 
-export class SearchPlanoByIdUseCase {
+export class SearchById {
   constructor(
     private planoRepository: PlanoRepository
   ) {
@@ -14,7 +14,8 @@ export class SearchPlanoByIdUseCase {
   }
 
   async execute({ id }: searchPlanoByIdUseCaseParams) {
-    const plano = await this.planoRepository.searchPlanoById(id)
+    console.log(id)
+    const plano = await this.planoRepository.findById({ id }, {})
 
     if (!plano) {
       throw new noPlanoFoundError()

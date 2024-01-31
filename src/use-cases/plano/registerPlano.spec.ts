@@ -1,15 +1,22 @@
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it, beforeEach } from 'vitest'
 import { RegisterPlanoUseCase } from './registerPlano'
 import { InMemoryPlano } from '@/repositories/in-memory/plano-in-memory'
 import { Slug } from '@/services/slug-generator'
 import { planoAlreadyExistsError } from '../errors/plano-already-exists-error'
+import { PlanoRepository } from '@/repositories/planoRepository'
 
 
 describe('RegisterPlano UseCase', () => {
+  let sut: RegisterPlanoUseCase
+  let planoRepository: PlanoRepository
+
+  beforeEach(() => {
+    planoRepository = new InMemoryPlano()
+    sut = new RegisterPlanoUseCase(planoRepository)
+  })
 
   it('should be able to register a plan', async () => {
-    const planoRepository = new InMemoryPlano()
-    const sut = new RegisterPlanoUseCase(planoRepository)
+
 
     const { plano } = await sut.execute({
       name: 'jhonDoe',
@@ -37,8 +44,7 @@ describe('RegisterPlano UseCase', () => {
 
 
   it('should not be able to register with a same slug twice', async () => {
-    const planoRepository = new InMemoryPlano()
-    const sut = new RegisterPlanoUseCase(planoRepository)
+
 
     const name = 'Bradesco 23'
 

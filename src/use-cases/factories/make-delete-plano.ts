@@ -1,10 +1,10 @@
 import { PrismaPlanoRepository } from "@/repositories/prisma/prismaPlanoRepository"
-import { DeletePlanoUseCase } from "../plano/deletePlanoUseCase"
+import { DeletePlano } from "../plano/deletePlano"
 
 
 export function makeDeletePlanoUseCase() {
   const planoRepository = new PrismaPlanoRepository()
-  const deletePlanoUseCase = new DeletePlanoUseCase(planoRepository)
+  const deletePlanoUseCase = new DeletePlano(planoRepository)
 
   return deletePlanoUseCase
 }

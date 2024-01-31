@@ -1,10 +1,17 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from '@prisma/client'
-import { IUpdatedPlano, PlanoRepository } from "../planoRepository";
-import { DefaultArgs } from "@prisma/client/runtime/library";
+import { IFindByIdProps, IUpdatedPlano, PlanoRepository } from "../planoRepository";
 
 
 export class PrismaPlanoRepository implements PlanoRepository {
+  async findById({ id, extraWhere }: IFindByIdProps, args?: Omit<Prisma.PlanoFindUniqueArgs, "where">) {
+    const plano = await prisma.plano.findUnique({
+      where: { id, ...extraWhere },
+      ...args
+    })
+
+    return plano
+  }
   async deletePlano(id: string): Promise<void> {
     await prisma.plano.delete({
       where: { id }
@@ -12,13 +19,10 @@ export class PrismaPlanoRepository implements PlanoRepository {
 
     return
   }
-  async updatePlano(props: IUpdatedPlano, args: Prisma.PlanoUpdateArgs<DefaultArgs>): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; }> {
+  async updatePlano({ id, extraWhere }: IUpdatedPlano, args: Omit<Prisma.PlanoUpdateArgs, 'where'>) {
     const updatedPlano = await prisma.plano.update({
-      where: { id: props.id },
-      data: {
-        name: args.data.name,
-        slug: args.data.slug,
-      },
+      where: { id, ...extraWhere },
+      ...args
     });
 
     return updatedPlano
@@ -34,13 +38,7 @@ export class PrismaPlanoRepository implements PlanoRepository {
 
 
 
-  async searchPlanoById(slug: string) {
 
-    const plano = await prisma.plano.findFirst({
-      where: { slug }
-    })
-    return plano
-  }
 
   async create(data: Prisma.PlanoCreateInput) {
     const plano = await prisma.plano.create({ data })
