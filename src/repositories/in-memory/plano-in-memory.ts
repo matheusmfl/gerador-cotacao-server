@@ -8,12 +8,6 @@ export class InMemoryPlano implements PlanoRepository {
 
   async searchBySlugParams(slug: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
 
-    this.items.push({
-      name: 'jhonDoe',
-      slug: 'jhondoe',
-      id: 'idQlq',
-      hospitalId: ''
-    })
 
     const plano: Plano | undefined = await this.items.find(item => {
       item.slug = slug
@@ -34,16 +28,15 @@ export class InMemoryPlano implements PlanoRepository {
     }
 
     this.items.push(plano)
-    console.log(this.items)
+
 
     return plano
   }
   async findBySlug(slug: string) {
-    const plano: Plano | undefined = await this.items.find(item => {
-      item.slug = slug
-    })
+    const plano: Plano | undefined = await this.items.find((item) => item.slug === slug)
 
     if (!plano) {
+      console.log('Nao achei o plano :/')
       return null
     }
 

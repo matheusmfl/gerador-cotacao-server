@@ -4,7 +4,7 @@ import { RegisterCorretorUseCase } from './registerCorretor'
 
 describe('RegisterCorretor UseCase', () => {
   it('should be able to register', async () => {
-    const corretorRepository = new InMemoryCorretor
+    const corretorRepository = new InMemoryCorretor()
     const registerCorretorUseCase = new RegisterCorretorUseCase(corretorRepository)
 
     const { user } = await registerCorretorUseCase.execute({
