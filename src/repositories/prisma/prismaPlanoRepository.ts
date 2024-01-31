@@ -5,6 +5,13 @@ import { DefaultArgs } from "@prisma/client/runtime/library";
 
 
 export class PrismaPlanoRepository implements PlanoRepository {
+  async deletePlano(id: string): Promise<void> {
+    await prisma.plano.delete({
+      where: { id }
+    })
+
+    return
+  }
   async updatePlano(props: IUpdatedPlano, args: Prisma.PlanoUpdateArgs<DefaultArgs>): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; }> {
     const updatedPlano = await prisma.plano.update({
       where: { id: props.id },
@@ -25,15 +32,9 @@ export class PrismaPlanoRepository implements PlanoRepository {
     return plano
   }
 
-  async findById(id: string) {
-    const plano = await prisma.plano.findFirst({
-      where: { id }
-    })
 
-    return plano
-  }
 
-  async searchBySlugParams(slug: string) {
+  async searchPlanoById(slug: string) {
 
     const plano = await prisma.plano.findFirst({
       where: { slug }

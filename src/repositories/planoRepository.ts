@@ -6,10 +6,10 @@ export interface IUpdatedPlano {
 }
 
 export interface PlanoRepository {
-  searchBySlugParams(slug: string): Promise<Plano | null>
+  searchPlanoById(slug: string): Promise<Plano | null>
   create(data: Prisma.PlanoCreateInput): Promise<Plano>
   findBySlug(slug: string): Promise<Plano | null>
   updatePlano(props: IUpdatedPlano, args: Prisma.PlanoUpdateArgs): Promise<Plano>
-  findById(id: string): Promise<Plano | null>
+  deletePlano(id: string): Promise<void>
 
 }

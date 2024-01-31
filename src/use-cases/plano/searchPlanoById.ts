@@ -2,19 +2,19 @@ import { PlanoRepository } from "@/repositories/planoRepository"
 import { noPlanoFoundError } from "../errors/no-plano-found-error"
 
 
-interface searchBySlugParamsUseCase {
-  slug: string
+interface searchPlanoByIdUseCaseParams {
+  id: string
 }
 
-export class SearchBySlugParamsUseCase {
+export class SearchPlanoByIdUseCase {
   constructor(
     private planoRepository: PlanoRepository
   ) {
 
   }
 
-  async execute({ slug }: searchBySlugParamsUseCase) {
-    const plano = await this.planoRepository.searchBySlugParams(slug)
+  async execute({ id }: searchPlanoByIdUseCaseParams) {
+    const plano = await this.planoRepository.searchPlanoById(id)
 
     if (!plano) {
       throw new noPlanoFoundError()

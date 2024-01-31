@@ -1,32 +1,34 @@
 import { expect, describe, it } from 'vitest'
 import { InMemoryPlano } from '@/repositories/in-memory/plano-in-memory'
-import { SearchBySlugParamsUseCase } from './searchBySlugParams'
+import { SearchPlanoByIdUseCase } from './searchPlanoById'
 
 
 
 
 describe('Search By SlugParams  UseCase', () => {
 
-  it('should be able to search Plano with a slug', async () => {
+  it('should be able to search Plano by Id', async () => {
     const planoRepository = new InMemoryPlano
-    const sut = new SearchBySlugParamsUseCase(planoRepository)
+    const sut = new SearchPlanoByIdUseCase(planoRepository)
 
 
     planoRepository.create({
+      id: '1',
       name: 'plano',
       slug: 'plano'
     })
 
-    const slug = 'plano'
+
 
 
     const { plano } = await sut.execute({
-      slug: slug
+      id: '1'
     })
 
 
 
-    await expect(plano.slug).toEqual(expect.any(String))
+
+    await expect(plano.slug).toEqual('plano')
   })
 
 

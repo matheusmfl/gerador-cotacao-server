@@ -6,13 +6,13 @@ import { z } from "zod"
 
 
 
-export async function searchBySlugParams(req: FastifyRequest, res: FastifyReply) {
+export async function searchPlanoById(req: FastifyRequest, res: FastifyReply) {
 
   const registerPlanoBodySchema = z.object({
-    slug: z.string(),
+    id: z.string(),
   })
 
-  const { slug } = registerPlanoBodySchema.parse(req.params)
+  const { id } = registerPlanoBodySchema.parse(req.params)
 
 
 
@@ -23,7 +23,7 @@ export async function searchBySlugParams(req: FastifyRequest, res: FastifyReply)
 
 
     const plano = await searchBySlugUseCase.execute({
-      slug
+      id
     })
 
 

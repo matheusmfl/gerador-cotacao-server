@@ -4,13 +4,18 @@ import { IUpdatedPlano, PlanoRepository } from "../planoRepository";
 
 export class InMemoryPlano implements PlanoRepository {
 
+
   public items: Plano[] = []
 
-  async searchBySlugParams(slug: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
+  deletePlano(id: string): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+
+  async searchPlanoById(id: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
 
 
     const plano: Plano | undefined = await this.items.find(item => {
-      return item.slug === slug
+      return item.id === id
     })
 
     if (!plano) {
@@ -20,12 +25,25 @@ export class InMemoryPlano implements PlanoRepository {
     return plano
   }
   async create(data: Prisma.PlanoCreateInput) {
-    const plano = {
-      id: 'id-qualquer',
-      name: data.name,
-      slug: data.slug,
-      hospitalId: null
+    let plano
+    if (data.id !== undefined) {
+      plano = {
+        id: data.id,
+        name: data.name,
+        slug: data.slug,
+        hospitalId: null
+      }
     }
+    else {
+      plano = {
+        id: 'id-qualquer',
+        name: data.name,
+        slug: data.slug,
+        hospitalId: null
+      }
+    }
+
+
 
     this.items.push(plano)
 

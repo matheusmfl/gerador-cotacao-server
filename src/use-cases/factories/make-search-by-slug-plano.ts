@@ -1,9 +1,9 @@
 import { PrismaPlanoRepository } from "@/repositories/prisma/prismaPlanoRepository"
-import { SearchBySlugParamsUseCase } from "../plano/searchBySlugParams"
+import { SearchPlanoByIdUseCase } from "../plano/searchPlanoById"
 
 export function makeSearchBySlugPlano() {
   const planoRepository = new PrismaPlanoRepository()
-  const searchBySlugUseCase = new SearchBySlugParamsUseCase(planoRepository)
+  const searchBySlugUseCase = new SearchPlanoByIdUseCase(planoRepository)
 
   return searchBySlugUseCase
 }
