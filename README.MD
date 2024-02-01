@@ -23,19 +23,20 @@ Cota-Ai
 ## RFs (Requisitos funcionais)
 
 - [ x ] Deve ser possível se cadastrar ( Cadastrar corretor );
-
 - [ x ] Deve ser possível cadastrar um plano  
-- [ x ] Não deve ser possível cadastrar o mesmo plano 2 vezes
 - [ x ] Deve ser possível encontrar plano pelo slug
 - [ x ] Deve ser possível Editar um plano  
-- [ ] Deve ser possível pegar todos os planos
+- [ x ] Deve ser possível pegar todos os planos
 - [ x ] Deve ser possível Deletar um plano  
 - [ x ] Deve ser possível Ler um plano pelo nome
+
 
 - [ ] Deve ser possível cadastrar um hospital
 - [ ] Deve ser possível editar um hospital
 - [ ] Deve ser possível deletar um hospital
-- [ ] Deve ser possível ler um hospital
+- [ ] Deve ser possível ler um ou mais hospitais pelo nome
+- [ ] Deve ser possível ler um hospital pelo ID
+- [ ] Deve ser possível listar todos os hospitais
 
 - [ ] Deve ser possível se autenticar (corretor);
 
@@ -59,17 +60,10 @@ Cota-Ai
 
 ## RNs (Regras de negócio)
 
-- [ ] O usuário não deve poder se cadastrar com um e-mail duplicado;
-- [ ] O usuário não pode fazer 2 check-ins no mesmo dia;
-- [ ] O usuário não pode fazer check-in se não estiver perto (100m) da academia;
-- [ ] O check-in só pode ser validado até 20 minutos após ser criado;
-- [ ] O check-in só pode ser validado por administradores;
-- [ ] A academia só pode ser cadastrada por administradores;
+- [ x ] O usuário não deve poder se cadastrar com um e-mail duplicado;
+- [ x ] Não deve ser possível cadastrar o mesmo plano 2 vezes
+- [ ] Não deve ser possível cadastrar o mesmo hospital 2 vezes ( same Name )
+
 
 ## RNFs (Requisitos não-funcionais)
 
-- [ ] A senha do usuário precisa estar criptografada;
-- [ ] Os dados da aplicação precisam estar persistidos em um banco PostgreSQL;
-- [ ] Todas listas de dados precisam estar paginadas com 20 itens por página;
-- [ ] O usuário deve ser identificado por um JWT (JSON Web Token);
-- [ ] A cotação deve ser identificada por um UUID
