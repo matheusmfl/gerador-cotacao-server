@@ -1,8 +1,19 @@
 import { Prisma } from "@prisma/client";
-import { HospitalRepository } from "../hospital-repository";
+import { HospitalRepository, IUpdateHospital } from "../hospital-repository";
 import { prisma } from "@/lib/prisma";
+import { DefaultArgs } from "@prisma/client/runtime/library";
 
 export class PrismaHospitalRepository implements HospitalRepository {
+
+
+  async update({ id, extraWhere }: IUpdateHospital, args: Omit<Prisma.HospitalUpdateArgs, 'where'>): Promise<{ id: string; razao_social: string; telefone: string; endereco: string; cro: string | null; bairro: string; cidade: string; estado: string; cep: string | null; corretorId: string | null; }> {
+    const updatedHospital = await prisma.hospital.update({
+      where: { id, ...extraWhere },
+      ...args
+    });
+
+    return updatedHospital
+  }
 
   async findAll(): Promise<{ id: string; razao_social: string; telefone: string; endereco: string; cro: string | null; bairro: string; cidade: string; estado: string; cep: string | null; corretorId: string | null; }[]> {
     const hospitals = await prisma.hospital.findMany()

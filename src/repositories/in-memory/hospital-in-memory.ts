@@ -1,12 +1,36 @@
 import { Hospital, Prisma } from "@prisma/client";
 
-import { HospitalRepository } from "../hospital-repository";
+import { HospitalRepository, IUpdateHospital } from "../hospital-repository";
+import { DefaultArgs } from "@prisma/client/runtime/library";
 
 
 export class InMemoryHospital implements HospitalRepository {
 
 
+
   public items: Hospital[] = []
+
+  async update(props: IUpdateHospital, args: Omit<Prisma.HospitalUpdateArgs<DefaultArgs>, "where">): Promise<{ id: string; razao_social: string; telefone: string; endereco: string; cro: string | null; bairro: string; cidade: string; estado: string; cep: string | null; corretorId: string | null; }> {
+    const index = await this.items.findIndex((item) => item.id === props.id)
+
+    let hospital = this.items[index]
+
+
+    hospital = {
+      id: props.id ?? '1',
+      bairro: args.data.bairro as string ?? 'bairro',
+      cep: args.data.cep as string ?? 'cep',
+      cidade: args.data.cidade as string ?? 'cidade',
+      corretorId: args.data.corretor as string ?? null,
+      cro: args.data.cro as string ?? 'cro',
+      endereco: args.data.endereco as string ?? 'endereco',
+      estado: args.data.estado as string ?? 'estado',
+      razao_social: args.data.razao_social as string ?? 'razao_social',
+      telefone: args.data.telefone as string ?? 'telephone'
+    }
+
+    return hospital
+  }
 
   async delete(id: string): Promise<void> {
     const hospitalIndex = await this.items.findIndex((item) => item.id === id);

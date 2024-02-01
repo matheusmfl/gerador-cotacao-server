@@ -32,8 +32,8 @@ Cota-Ai
 
 
 - [ x ] Deve ser possível cadastrar um hospital
-- [ ] Deve ser possível editar um hospital
-- [ ] Deve ser possível deletar um hospital
+- [ x ] Deve ser possível editar um hospital
+- [ x ] Deve ser possível deletar um hospital
 - [ x ] Deve ser possível ler um ou mais hospitais pelo nome
 - [ x ] Deve ser possível ler um hospital pelo ID
 - [ x ] Deve ser possível listar todos os hospitais
