@@ -3,6 +3,21 @@ import { HospitalRepository } from "../hospital-repository";
 import { prisma } from "@/lib/prisma";
 
 export class PrismaHospitalRepository implements HospitalRepository {
+  async findByName(name: string) {
+    const hospital = await prisma.hospital.findFirst({
+      where: {
+        razao_social: {
+          contains: name
+        }
+      }
+    })
+
+    if (!hospital) {
+      return null
+    }
+
+    return hospital
+  }
   async findById(id: string) {
     const hospital = await prisma.hospital.findUnique({
       where: { id }
