@@ -5,7 +5,18 @@ import { HospitalRepository } from "../hospital-repository";
 
 export class InMemoryHospital implements HospitalRepository {
 
+
   public items: Hospital[] = []
+
+  async delete(id: string): Promise<void> {
+    const hospitalIndex = await this.items.findIndex((item) => item.id === id);
+
+    if (hospitalIndex !== -1) {
+      this.items.splice(hospitalIndex, 1);
+    }
+
+    return
+  }
 
   async findAll(): Promise<{ id: string; razao_social: string; telefone: string; endereco: string; cro: string | null; bairro: string; cidade: string; estado: string; cep: string | null; corretorId: string | null; }[]> {
     const hospitals = this.items

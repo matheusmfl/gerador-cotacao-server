@@ -5,4 +5,5 @@ export interface HospitalRepository {
   findById(id: string): Promise<Hospital | null>
   findByName(name: string): Promise<Hospital | null>
   findAll(): Promise<Hospital[]>
+  delete(id: string): Promise<void>
 }
