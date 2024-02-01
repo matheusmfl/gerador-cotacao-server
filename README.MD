@@ -34,9 +34,9 @@ Cota-Ai
 - [ x ] Deve ser possível cadastrar um hospital
 - [ ] Deve ser possível editar um hospital
 - [ ] Deve ser possível deletar um hospital
-- [ ] Deve ser possível ler um ou mais hospitais pelo nome
+- [ x ] Deve ser possível ler um ou mais hospitais pelo nome
 - [ x ] Deve ser possível ler um hospital pelo ID
-- [ ] Deve ser possível listar todos os hospitais
+- [ x ] Deve ser possível listar todos os hospitais
 
 - [ ] Deve ser possível se autenticar (corretor);
 
@@ -62,7 +62,7 @@ Cota-Ai
 
 - [ x ] O usuário não deve poder se cadastrar com um e-mail duplicado;
 - [ x ] Não deve ser possível cadastrar o mesmo plano 2 vezes
-- [ ] Não deve ser possível cadastrar o mesmo hospital 2 vezes ( same Name )
+- [ x ] Não deve ser possível cadastrar o mesmo hospital 2 vezes ( same Name )
 - [ ] Ao buscar um hospital pelo nome, não deve se diferenciar letras maiúsculas de minúsculas
 
 
