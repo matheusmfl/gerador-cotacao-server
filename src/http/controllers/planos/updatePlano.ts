@@ -1,4 +1,4 @@
-import { noPlanoFoundError } from "@/use-cases/errors/no-plano-found-error"
+import { notFoundError } from "@/use-cases/errors/not-found-error"
 import { makeUpdatePlanoUseCase } from "@/use-cases/factories/make-update-plano"
 
 import { FastifyReply, FastifyRequest } from "fastify"
@@ -40,7 +40,7 @@ export async function updatePlano(req: FastifyRequest, res: FastifyReply) {
     return res.status(200).send(plano)
 
   } catch (err) {
-    if (err instanceof noPlanoFoundError) {
+    if (err instanceof notFoundError) {
       return res.status(409).send({ message: err.message })
     }
     console.log(err)

@@ -1,4 +1,4 @@
-import { noPlanoFoundError } from "@/use-cases/errors/no-plano-found-error"
+import { notFoundError } from "@/use-cases/errors/not-found-error"
 import { makeDeletePlanoUseCase } from "@/use-cases/factories/make-delete-plano"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
@@ -25,7 +25,7 @@ export async function deletePlano(req: FastifyRequest, res: FastifyReply) {
     })
 
   } catch (err) {
-    if (err instanceof noPlanoFoundError) {
+    if (err instanceof notFoundError) {
       return res.status(404).send({ message: err.message })
     }
     return res.status(500).send()

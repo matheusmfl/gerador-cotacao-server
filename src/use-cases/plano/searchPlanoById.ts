@@ -1,5 +1,5 @@
 import { PlanoRepository } from "@/repositories/planoRepository"
-import { noPlanoFoundError } from "../errors/no-plano-found-error"
+import { notFoundError } from "../errors/not-found-error"
 
 
 interface searchPlanoByIdUseCaseParams {
@@ -18,7 +18,7 @@ export class SearchById {
     const plano = await this.planoRepository.findById({ id }, {})
 
     if (!plano) {
-      throw new noPlanoFoundError()
+      throw new notFoundError()
     }
 
     return { plano }

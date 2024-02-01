@@ -1,5 +1,5 @@
 import { PlanoRepository } from "@/repositories/planoRepository"
-import { noPlanoFoundError } from "../errors/no-plano-found-error"
+import { notFoundError } from "../errors/not-found-error"
 
 
 
@@ -21,7 +21,7 @@ export class DeletePlano {
     const plano = await this.planoRepository.findById({ id }, {})
 
     if (!plano) {
-      throw new noPlanoFoundError()
+      throw new notFoundError()
     }
 
     await this.planoRepository.deletePlano(id)

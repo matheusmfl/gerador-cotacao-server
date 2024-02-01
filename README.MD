@@ -31,11 +31,11 @@ Cota-Ai
 - [ x ] Deve ser possível Ler um plano pelo nome
 
 
-- [ ] Deve ser possível cadastrar um hospital
+- [ x ] Deve ser possível cadastrar um hospital
 - [ ] Deve ser possível editar um hospital
 - [ ] Deve ser possível deletar um hospital
 - [ ] Deve ser possível ler um ou mais hospitais pelo nome
-- [ ] Deve ser possível ler um hospital pelo ID
+- [ x ] Deve ser possível ler um hospital pelo ID
 - [ ] Deve ser possível listar todos os hospitais
 
 - [ ] Deve ser possível se autenticar (corretor);

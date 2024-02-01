@@ -1,5 +1,6 @@
 import { PlanoRepository } from "@/repositories/planoRepository"
-import { noPlanoFoundError } from "../errors/no-plano-found-error"
+import { notFoundError } from "../errors/not-found-error"
+
 
 
 
@@ -16,7 +17,7 @@ export class FindAllPlanosUseCase {
     const planos = await this.planoRepository.findAll()
 
     if (!planos) {
-      throw new noPlanoFoundError()
+      throw new notFoundError()
     }
 
     return { planos }
