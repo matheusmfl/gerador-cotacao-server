@@ -66,30 +66,23 @@ model Hospital {
 }
 
 model Dependente {
-  id            String       @id @default(uuid())
-  nome          String
-  idade         Int
-  preco         Int?
-  dependentes   Dependentes? @relation(fields: [dependentesId], references: [id])
-  dependentesId String?
-}
+  id        String  @id @default(uuid())
+  nome      String
+  idade     Int
+  preco     Int?
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
+  clienteId String
 
-model Dependentes {
-  id         String       @id @default(uuid())
-  dependente Dependente[]
-  cliente    Cliente?     @relation(fields: [clienteId], references: [id])
-  clienteId  String?
-
-  @@map("dependentes")
+  @@map("dependente")
 }
 
 model Cliente {
-  id          String        @id @default(uuid())
+  id          String       @id @default(uuid())
   nome        String
   documento   String
   preco       Int?
   cotacoes    Cotacao[]
-  dependentes Dependentes[]
+  dependentes Dependente[]
 
   @@map("cliente")
 }
