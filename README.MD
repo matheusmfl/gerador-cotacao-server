@@ -38,6 +38,22 @@ Cota-Ai
 - [ x ] Deve ser possível ler um hospital pelo ID
 - [ x ] Deve ser possível listar todos os hospitais
 
+- [ x ] Deve ser possível cadastrar um cliente
+- [  ] deve ser possível ler um cliente por id
+- [  ] deve ser possível ler um cliente por nome
+- [  ] deve ser possível ler um cliente pelo documento
+- [  ] Deve ser possível editar um cliente
+- [  ] deve ser possível deletar um cliente
+- [  ] Deve ser possível cadastrar um dependente desse cliente
+
+
+- [ x ] Deve ser possível cadastrar um dependente
+- [ x ] Deve ser possível editar um hospital
+- [ x ] Deve ser possível deletar um hospital
+- [ x ] Deve ser possível ler um ou mais hospitais pelo nome
+- [ x ] Deve ser possível ler um hospital pelo ID
+- [ x ] Deve ser possível listar todos os hospitais
+
 - [ ] Deve ser possível se autenticar (corretor);
 
 - [ ] Deve ser possível cadastrar uma rede referenciada;
@@ -63,6 +79,7 @@ Cota-Ai
 - [ x ] O usuário não deve poder se cadastrar com um e-mail duplicado;
 - [ x ] Não deve ser possível cadastrar o mesmo plano 2 vezes
 - [ x ] Não deve ser possível cadastrar o mesmo hospital 2 vezes ( same Name )
+- [  ] Não deve ser possível cadastrar o cliente com mesmo documento
 - [ ] Ao buscar um hospital pelo nome, não deve se diferenciar letras maiúsculas de minúsculas
 
 
