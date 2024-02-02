@@ -10,8 +10,7 @@ export async function deletePlano(req: FastifyRequest, res: FastifyReply) {
     id: z.string()
   })
   const { id } = deletePlanoParamsSchema.parse(req.params)
-  console.log(id)
-  console.log("OLAA")
+
 
 
 

@@ -39,7 +39,7 @@ Cota-Ai
 - [ x ] Deve ser possível listar todos os hospitais
 
 - [ x ] Deve ser possível cadastrar um cliente
-- [  ] deve ser possível ler um cliente por id
+- [ x ] deve ser possível ler um cliente por id
 - [  ] deve ser possível ler um cliente por nome
 - [  ] deve ser possível ler um cliente pelo documento
 - [  ] Deve ser possível editar um cliente

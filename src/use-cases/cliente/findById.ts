@@ -1,24 +1,26 @@
 import { ClienteRepository } from "@/repositories/cliente-repository"
+import { Cliente } from "@prisma/client"
+import { notFoundError } from "../errors/not-found-error"
 
 
-interface createClienteUseCaseRequest {
-  name: string
-  documento: string
+interface findClienteByIdRequest {
+  id: string
 }
 
-export class CreateClienteUseCase {
+
+export class FindClienteByIdUseCase {
   constructor(
     private clienteRepository: ClienteRepository
   ) {
 
   }
 
-  async execute({ name, documento }: createClienteUseCaseRequest) {
-    const cliente = await this.clienteRepository.create({
-      nome: name,
-      documento,
-    })
+  async execute({ id }: findClienteByIdRequest) {
+    const cliente = await this.clienteRepository.findById(id)
 
+    if (!cliente) {
+      throw new notFoundError()
+    }
     return { cliente }
   }
 

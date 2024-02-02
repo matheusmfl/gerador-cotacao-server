@@ -43,7 +43,7 @@ export async function updatePlano(req: FastifyRequest, res: FastifyReply) {
     if (err instanceof notFoundError) {
       return res.status(409).send({ message: err.message })
     }
-    console.log(err)
+
     return res.status(500).send()
   }
 }

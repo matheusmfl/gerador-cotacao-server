@@ -62,7 +62,7 @@ export class InMemoryHospital implements HospitalRepository {
   async findById(id: string): Promise<{ id: string; razao_social: string; telefone: string; endereco: string; cro: string | null; bairro: string; cidade: string; estado: string; cep: string | null; corretorId: string | null; } | null> {
 
     const hospital = this.items.find((item) => item.id === id)
-    console.log(this.items)
+
 
     if (!hospital) {
       return null

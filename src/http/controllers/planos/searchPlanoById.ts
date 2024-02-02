@@ -14,7 +14,7 @@ export async function SearchById(req: FastifyRequest, res: FastifyReply) {
 
   const { id } = registerPlanoBodySchema.parse(req.params)
 
-  console.log(id)
+
 
 
   try {

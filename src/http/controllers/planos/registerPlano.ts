@@ -20,7 +20,7 @@ export async function registerPlano(req: FastifyRequest, res: FastifyReply) {
     const registerPlanoUseCase = makerRegisterPlano()
 
     const slug = Slug.createFromText(name)
-    console.log(slug)
+
 
     await registerPlanoUseCase.execute({
       name,
