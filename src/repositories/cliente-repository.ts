@@ -13,4 +13,5 @@ export interface ClienteRepository {
   findByName(name: string): Promise<null | Cliente[]>
   findByDocumento(documento: string): Promise<Cliente | null>
   update(props: IUpdateCliente, args: Omit<Prisma.ClienteUpdateArgs, 'where'>): Promise<Cliente>
+  delete(id: string): Promise<void>
 }

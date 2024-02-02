@@ -5,6 +5,12 @@ import { ClienteRepository, IUpdateCliente } from "../cliente-repository";
 
 
 export class PrismaClienteRepository implements ClienteRepository {
+
+  async delete(id: string): Promise<void> {
+    await prisma.cliente.delete({
+      where: { id }
+    })
+  }
   async update({ id, extraWhere }: IUpdateCliente, args: Omit<Prisma.ClienteUpdateArgs, 'where'>) {
     const clienteUpdated = await prisma.cliente.update({
       where: { id, ...extraWhere },

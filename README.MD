@@ -42,17 +42,12 @@ Cota-Ai
 - [ x ] deve ser possível ler um cliente por id
 - [ x ] deve ser possível ler um cliente por nome
 - [ x ] deve ser possível ler um cliente pelo documento
-- [  ] Deve ser possível editar um cliente passando o ID
+- [ x ] Deve ser possível editar um cliente passando o ID
 - [  ] deve ser possível deletar um cliente
 - [  ] Deve ser possível cadastrar um dependente desse cliente
 
 
-- [ x ] Deve ser possível cadastrar um dependente
-- [ x ] Deve ser possível editar um hospital
-- [ x ] Deve ser possível deletar um hospital
-- [ x ] Deve ser possível ler um ou mais hospitais pelo nome
-- [ x ] Deve ser possível ler um hospital pelo ID
-- [ x ] Deve ser possível listar todos os hospitais
+
 
 - [ ] Deve ser possível se autenticar (corretor);
 

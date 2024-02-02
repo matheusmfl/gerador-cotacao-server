@@ -4,7 +4,16 @@ import { DefaultArgs } from "@prisma/client/runtime/library";
 
 export class InMemoryCliente implements ClienteRepository {
 
+
   public items: Cliente[] = []
+
+  async delete(id: string): Promise<void> {
+    const index = await this.items.findIndex(item => item.id === id)
+
+    const deletedCliente = await this.items.splice(index, 1)
+
+    return
+  }
 
   async update(props: IUpdateCliente, args: Omit<Prisma.ClienteUpdateArgs<DefaultArgs>, "where">): Promise<{ id: string; nome: string; documento: string; preco: number | null; }> {
     const index = await this.items.findIndex((item) => item.id === props.id)
