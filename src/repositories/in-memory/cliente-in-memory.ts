@@ -5,7 +5,16 @@ export class InMemoryCliente implements ClienteRepository {
 
 
 
+
   public items: Cliente[] = []
+
+  async findByDocumento(documento: string): Promise<{ id: string; nome: string; documento: string; preco: number | null; } | null> {
+    const cliente = await this.items.find(item => item.documento === documento)
+    if (!cliente) {
+      return null
+    }
+    return cliente
+  }
 
   async findByName(name: string) {
     const clientes = this.items.filter(cliente => cliente.nome === name)

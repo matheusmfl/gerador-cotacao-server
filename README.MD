@@ -40,9 +40,9 @@ Cota-Ai
 
 - [ x ] Deve ser possível cadastrar um cliente
 - [ x ] deve ser possível ler um cliente por id
-- [  ] deve ser possível ler um cliente por nome
-- [  ] deve ser possível ler um cliente pelo documento
-- [  ] Deve ser possível editar um cliente
+- [ x ] deve ser possível ler um cliente por nome
+- [ x ] deve ser possível ler um cliente pelo documento
+- [  ] Deve ser possível editar um cliente passando o ID
 - [  ] deve ser possível deletar um cliente
 - [  ] Deve ser possível cadastrar um dependente desse cliente
 
