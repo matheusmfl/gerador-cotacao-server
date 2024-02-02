@@ -1,10 +1,18 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from '@prisma/client'
 
-import { ClienteRepository } from "../cliente-repository";
+import { ClienteRepository, IUpdateCliente } from "../cliente-repository";
 
 
 export class PrismaClienteRepository implements ClienteRepository {
+  async update({ id, extraWhere }: IUpdateCliente, args: Omit<Prisma.ClienteUpdateArgs, 'where'>) {
+    const clienteUpdated = await prisma.cliente.update({
+      where: { id, ...extraWhere },
+      ...args
+    });
+
+    return clienteUpdated
+  }
   async findByDocumento(documento: string): Promise<{ id: string; nome: string; documento: string; preco: number | null; } | null> {
     const cliente = await prisma.cliente.findFirst({
       where: {

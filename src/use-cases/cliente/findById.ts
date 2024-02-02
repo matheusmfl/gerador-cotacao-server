@@ -1,5 +1,4 @@
 import { ClienteRepository } from "@/repositories/cliente-repository"
-import { Cliente } from "@prisma/client"
 import { notFoundError } from "../errors/not-found-error"
 
 

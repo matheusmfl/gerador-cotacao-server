@@ -9,7 +9,7 @@ describe('Create cliente UseCase', () => {
     const registerCorretorUseCase = new CreateClienteUseCase(clienteRepository)
 
     const { cliente } = await registerCorretorUseCase.execute({
-      name: 'jhonDoe',
+      name: 'johnDoe',
       documento: '123456'
     })
     expect(cliente.id).toEqual(expect.any(String))
