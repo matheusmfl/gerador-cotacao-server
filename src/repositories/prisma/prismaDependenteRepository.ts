@@ -1,11 +1,23 @@
 import { prisma } from "@/lib/prisma";
 
-import { DependenteRepository, IDependenteCreateProps } from "../dependente-repository";
+import { DependenteRepository, IDependenteCreateProps, IUpdatedDependente } from "../dependente-repository";
+import { Prisma } from "@prisma/client";
 
 
 
 
 export class PrismaDependenteRepository implements DependenteRepository {
+  async update({ id, extraWhere }: IUpdatedDependente, args: Omit<Prisma.DependenteUpdateArgs, 'where'>) {
+
+    const updatedDependente = await prisma.dependente.update({
+      where: { id, ...extraWhere },
+      ...args
+    });
+
+    return updatedDependente
+  }
+
+
   async delete(clientId: string, dependentId: string): Promise<void> {
     await prisma.dependente.delete({
       where: { id: clientId }
@@ -13,9 +25,9 @@ export class PrismaDependenteRepository implements DependenteRepository {
 
     return
   }
-  async findById(clientId: string): Promise<{ id: string; nome: string; idade: number; preco: number | null; clienteId: string; } | null> {
+  async findById(dependenteId: string): Promise<{ id: string; nome: string; idade: number; preco: number | null; clienteId: string; } | null> {
     const dependente = await prisma.dependente.findUnique({
-      where: { id: clientId }
+      where: { id: dependenteId }
     })
 
     if (!dependente) {
