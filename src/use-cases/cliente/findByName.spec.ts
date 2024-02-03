@@ -32,7 +32,6 @@ describe('Find Client By ID UseCase', () => {
       name: 'Matheus Fonteles'
     })
 
-    console.log(clientes)
     expect(clientes).toHaveLength(2)
   })
 
@@ -50,7 +49,7 @@ describe('Find Client By ID UseCase', () => {
         name: 'Nome qualquer'
       })
 
-      console.log(cliente + 'teste 2')
+
     }).rejects.toBeInstanceOf(notFoundError)
   })
 

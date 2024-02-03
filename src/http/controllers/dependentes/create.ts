@@ -26,7 +26,6 @@ export async function createDependentesController(req: FastifyRequest, res: Fast
 
   try {
 
-    console.log(clienteId)
     const registerDependenteUseCase = makeRegisterDependente()
 
 
