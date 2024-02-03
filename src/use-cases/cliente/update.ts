@@ -5,7 +5,6 @@ import { notFoundError } from "../errors/not-found-error"
 interface updateClienteUseCaseRequest {
   name: string
   documento: string
-  preco?: number
   id: string
 }
 
@@ -16,7 +15,7 @@ export class UpdateClienteUseCase {
 
   }
 
-  async execute({ name, documento, preco, id }: updateClienteUseCaseRequest) {
+  async execute({ name, documento, id }: updateClienteUseCaseRequest) {
 
     const cliente = await this.clienteRepository.findById(id)
 
@@ -27,7 +26,6 @@ export class UpdateClienteUseCase {
     const clienteUpdated = await this.clienteRepository.update({ id }, {
       data: {
         nome: name,
-        preco,
         documento
       }
     })

@@ -19,7 +19,7 @@ export class PrismaClienteRepository implements ClienteRepository {
 
     return clienteUpdated
   }
-  async findByDocumento(documento: string): Promise<{ id: string; nome: string; documento: string; preco: number | null; } | null> {
+  async findByDocumento(documento: string): Promise<{ id: string; nome: string; documento: string; } | null> {
     const cliente = await prisma.cliente.findFirst({
       where: {
         documento
@@ -49,6 +49,9 @@ export class PrismaClienteRepository implements ClienteRepository {
     const cliente = await prisma.cliente.findUnique({
       where: {
         id
+      },
+      include: {
+        dependentes: true
       }
     })
 

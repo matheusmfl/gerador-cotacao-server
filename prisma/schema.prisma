@@ -80,7 +80,6 @@ model Cliente {
   id          String       @id @default(uuid())
   nome        String
   documento   String
-  preco       Int?
   cotacoes    Cotacao[]
   dependentes Dependente[]
 

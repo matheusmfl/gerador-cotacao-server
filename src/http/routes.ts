@@ -6,6 +6,9 @@ import { updatePlano } from "./controllers/planos/updatePlano";
 import { deletePlano } from "./controllers/planos/deletePlano";
 import { SearchById } from "./controllers/planos/searchPlanoById";
 import { FindAllPlanos } from "./controllers/planos/findAllPlanos";
+import { registerCliente } from "./controllers/clientes/registerCliente";
+import { findClienteById } from "./controllers/clientes/findById";
+import { createDependentesController } from "./controllers/dependentes/create";
 
 
 
@@ -23,5 +26,13 @@ export async function appRoutes(app: FastifyInstance) {
   app.get('/planos', FindAllPlanos)
 
   // Hospital
+
+  // dependentes
+
+  app.post('/clientes/:clienteId/dependente', createDependentesController)
+  // Clientes
+
+  app.post('/cliente', registerCliente)
+  app.get('/clientes/:id', findClienteById)
 
 }

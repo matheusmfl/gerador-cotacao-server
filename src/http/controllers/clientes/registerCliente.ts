@@ -27,7 +27,7 @@ export async function registerCliente(req: FastifyRequest, res: FastifyReply) {
       name
     })
 
-    return res.status(200).send({
+    return res.status(201).send({
       cliente
     })
 
