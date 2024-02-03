@@ -1,17 +1,17 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { RegisterDependenteUseCase } from './register'
 import { InMemoryDependente } from '@/repositories/in-memory/dependente-in-memory'
 import { InMemoryCliente } from '@/repositories/in-memory/cliente-in-memory'
+import { DeleteDependenteUseCase } from './delete'
 
-describe('RegisterCorretor UseCase', () => {
+describe('Delete Dependent UseCase', () => {
   let dependenteRepository: InMemoryDependente
-  let sut: RegisterDependenteUseCase
+  let sut: DeleteDependenteUseCase
   let clienteRepository: InMemoryCliente
 
   beforeEach(() => {
     dependenteRepository = new InMemoryDependente()
     clienteRepository = new InMemoryCliente()
-    sut = new RegisterDependenteUseCase(dependenteRepository, clienteRepository)
+    sut = new DeleteDependenteUseCase(dependenteRepository, clienteRepository)
   })
 
   it('should be able to register dependente', async () => {
@@ -22,12 +22,12 @@ describe('RegisterCorretor UseCase', () => {
       id: '01'
     })
 
-    const dependente = await sut.execute({
+    const dependenteCriado = await dependenteRepository.create({
       clienteId: '01', data: {
-        id: 'dependente-1',
-        nome: 'Filho matheus',
         idade: 18,
-        preco: 4000,
+        nome: 'Matheus Fonteles Filho',
+        id: '02',
+        preco: 1800,
         cliente: {
           connect: {
             id: '01'
@@ -36,13 +36,13 @@ describe('RegisterCorretor UseCase', () => {
       }
     })
 
-    const clientWithDependents = clienteRepository.findById('01')
 
-    await expect(dependente.dependente.id).toEqual('dependente-1')
+    await sut.execute({ clientId: '01', dependentId: '02' })
+
+    const findedDependente = await dependenteRepository.findById('02')
+
+
+    await expect(findedDependente).toBeNull()
   })
-
-
-
-
 
 })

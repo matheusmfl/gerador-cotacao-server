@@ -22,34 +22,34 @@ Cota-Ai
 
 ## RFs (Requisitos funcionais)
 
-- [ x ] Deve ser possível se cadastrar ( Cadastrar corretor );
-- [ x ] Deve ser possível cadastrar um plano  
-- [ x ] Deve ser possível encontrar plano pelo slug
-- [ x ] Deve ser possível Editar um plano  
-- [ x ] Deve ser possível pegar todos os planos
-- [ x ] Deve ser possível Deletar um plano  
-- [ x ] Deve ser possível Ler um plano pelo nome
+- [x] Deve ser possível se cadastrar ( Cadastrar corretor );
+- [x] Deve ser possível cadastrar um plano  
+- [x] Deve ser possível encontrar plano pelo slug
+- [x] Deve ser possível Editar um plano  
+- [x] Deve ser possível pegar todos os planos
+- [x] Deve ser possível Deletar um plano  
+- [x] Deve ser possível Ler um plano pelo nome
 
 
-- [ x ] Deve ser possível cadastrar um hospital
-- [ x ] Deve ser possível editar um hospital
-- [ x ] Deve ser possível deletar um hospital
-- [ x ] Deve ser possível ler um ou mais hospitais pelo nome
-- [ x ] Deve ser possível ler um hospital pelo ID
-- [ x ] Deve ser possível listar todos os hospitais
+- [x] Deve ser possível cadastrar um hospital
+- [x] Deve ser possível editar um hospital
+- [x] Deve ser possível deletar um hospital
+- [x] Deve ser possível ler um ou mais hospitais pelo nome
+- [x] Deve ser possível ler um hospital pelo ID
+- [x] Deve ser possível listar todos os hospitais
 
-- [ x ] Deve ser possível cadastrar um cliente
-- [ x ] deve ser possível ler um cliente por id
-- [ x ] deve ser possível ler um cliente por nome
-- [ x ] deve ser possível ler um cliente pelo documento
-- [ x ] Deve ser possível editar um cliente passando o ID
-- [ x ] deve ser possível deletar um cliente
+- [x] Deve ser possível cadastrar um cliente
+- [x] deve ser possível ler um cliente por id
+- [x] deve ser possível ler um cliente por nome
+- [x] deve ser possível ler um cliente pelo documento
+- [x] Deve ser possível editar um cliente passando o ID
+- [x] deve ser possível deletar um cliente
 
 
-- [  ] Deve ser possível cadastrar um dependente de um cliente
-- [  ] Deve ser possível listar dependentes do cliente
+- [x] Deve ser possível cadastrar um dependente de um cliente
+- [x] Deve ser possível listar dependentes do cliente
 - [  ] Deve ser possível atualizar lista de dependentes do cliente por id do dependente
-- [  ] Deve ser possível deletar um dependente
+- [x] Deve ser possível deletar um dependente
 
 
 
