@@ -1,4 +1,4 @@
-import { Prisma, Plano } from "@prisma/client";
+import { Prisma, Plano, Hospital } from "@prisma/client";
 
 export interface IUpdatedPlano {
   id: string
@@ -12,4 +12,5 @@ export interface PlanoRepository {
   updatePlano(props: IUpdatedPlano, args: Omit<Prisma.PlanoUpdateArgs, 'where'>): Promise<Plano>
   deletePlano(id: string): Promise<void>
   findAll(): Promise<Plano[]>
+  listarHospitaisDoPlano(planoId: string): Promise<Hospital[] | null>
 }

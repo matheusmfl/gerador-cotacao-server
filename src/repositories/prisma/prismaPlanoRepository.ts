@@ -4,11 +4,36 @@ import { IUpdatedPlano, PlanoRepository } from "../planoRepository";
 
 
 export class PrismaPlanoRepository implements PlanoRepository {
+
+  async listarHospitaisDoPlano(planoId: string) {
+    const plano = await prisma.plano.findUnique({
+      where: { id: planoId },
+      include: {
+        hospitaisPlano: {
+          include: {
+            hospital: true,
+          },
+        },
+      },
+    });
+
+    if (plano) {
+      const hospitals = plano.hospitaisPlano.map((hospPlano) => hospPlano.hospital);
+      return hospitals
+    } else {
+      return null
+    }
+
+
+  }
+
+
   async findAll(): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; }[]> {
     const planos = await prisma.plano.findMany()
 
     return planos
   }
+
   async findById(id: string) {
     const plano = await prisma.plano.findUnique({
       where: { id },
@@ -16,6 +41,7 @@ export class PrismaPlanoRepository implements PlanoRepository {
 
     return plano
   }
+
   async deletePlano(id: string): Promise<void> {
     await prisma.plano.delete({
       where: { id }
@@ -23,6 +49,7 @@ export class PrismaPlanoRepository implements PlanoRepository {
 
     return
   }
+
   async updatePlano({ id, extraWhere }: IUpdatedPlano, args: Omit<Prisma.PlanoUpdateArgs, 'where'>) {
     const updatedPlano = await prisma.plano.update({
       where: { id, ...extraWhere },

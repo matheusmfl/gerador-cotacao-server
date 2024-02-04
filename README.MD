@@ -56,7 +56,7 @@ Cota-Ai
 
 - [ ] Deve ser possível se autenticar (corretor);
 
-- [ ] Deve ser possível atribuir um hospital à um plano
+- [ x ] Deve ser possível atribuir um hospital à uma rede referenciada
 - [ ] Deve ser possível remover um hospital de um plano
 - [ ] Deve ser possível listar hospitais de um plano
 

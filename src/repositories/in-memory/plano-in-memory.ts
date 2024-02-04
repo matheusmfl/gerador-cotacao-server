@@ -1,11 +1,33 @@
 import { Plano, Prisma } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime/library";
 import { IUpdatedPlano, PlanoRepository } from "../planoRepository";
+import { InMemoryHospital } from "./hospital-in-memory";
 
 export class InMemoryPlano implements PlanoRepository {
 
-
   public items: Plano[] = []
+  public hospitalRepository = new InMemoryHospital()
+
+  async listarHospitaisDoPlano(planoId: string): Promise<{ id: string; razao_social: string; telefone: string; endereco: string; cro: string | null; bairro: string; cidade: string; estado: string; cep: string | null; corretorId: string | null; }[] | null> {
+    const plano = this.items.find((item) => item.id === planoId);
+
+    if (!plano) {
+      return null;
+    }
+
+    const hospitalId = plano.hospitalId;
+    if (!hospitalId) {
+      return null;
+    }
+
+    const hospital = await this.hospitalRepository.findById(hospitalId);
+
+    if (!hospital) {
+      return null;
+    }
+
+    return [{ ...hospital }];
+  }
 
   async findAll(): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; }[]> {
     const planos = this.items
