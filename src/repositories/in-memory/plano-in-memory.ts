@@ -1,6 +1,6 @@
 import { Plano, Prisma } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime/library";
-import { IFindByIdProps, IUpdatedPlano, PlanoRepository } from "../planoRepository";
+import { IUpdatedPlano, PlanoRepository } from "../planoRepository";
 
 export class InMemoryPlano implements PlanoRepository {
 
@@ -89,7 +89,7 @@ export class InMemoryPlano implements PlanoRepository {
 
     return plano
   }
-  async findById({ id }: IFindByIdProps, args: Omit<Prisma.PlanoFindUniqueArgs, 'where'>): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
+  async findById(id: string): Promise<{ id: string; name: string; slug: string; hospitalId: string | null; } | null> {
     const plano: Plano | undefined = await this.items.find(item => {
       return item.id === id
     })

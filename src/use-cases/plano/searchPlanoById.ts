@@ -15,7 +15,7 @@ export class SearchById {
 
   async execute({ id }: searchPlanoByIdUseCaseParams) {
 
-    const plano = await this.planoRepository.findById({ id }, {})
+    const plano = await this.planoRepository.findById(id)
 
     if (!plano) {
       throw new notFoundError()

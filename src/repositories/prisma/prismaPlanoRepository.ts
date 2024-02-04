@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from '@prisma/client'
-import { IFindByIdProps, IUpdatedPlano, PlanoRepository } from "../planoRepository";
+import { IUpdatedPlano, PlanoRepository } from "../planoRepository";
 
 
 export class PrismaPlanoRepository implements PlanoRepository {
@@ -9,10 +9,9 @@ export class PrismaPlanoRepository implements PlanoRepository {
 
     return planos
   }
-  async findById({ id, extraWhere }: IFindByIdProps, args?: Omit<Prisma.PlanoFindUniqueArgs, "where">) {
+  async findById(id: string) {
     const plano = await prisma.plano.findUnique({
-      where: { id, ...extraWhere },
-      ...args
+      where: { id },
     })
 
     return plano

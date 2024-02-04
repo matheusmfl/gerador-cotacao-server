@@ -18,7 +18,7 @@ export class DeletePlano {
 
   async execute({ id }: deletePlanoUseCaseProps): Promise<void> {
 
-    const plano = await this.planoRepository.findById({ id }, {})
+    const plano = await this.planoRepository.findById(id)
 
     if (!plano) {
       throw new notFoundError()

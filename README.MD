@@ -48,7 +48,7 @@ Cota-Ai
 
 - [x] Deve ser possível cadastrar um dependente de um cliente
 - [x] Deve ser possível listar dependentes do cliente
-- [  ] Deve ser possível atualizar lista de dependentes do cliente por id do dependente
+- [ x ] Deve ser possível atualizar lista de dependentes do cliente por id do dependente
 - [x] Deve ser possível deletar um dependente
 
 
@@ -56,10 +56,9 @@ Cota-Ai
 
 - [ ] Deve ser possível se autenticar (corretor);
 
-- [ ] Deve ser possível cadastrar uma rede referenciada;
-- [ ] Deve ser possível Editar uma rede referenciada;
-- [ ] Deve ser possível remover uma rede referenciada;
-- [ ] Deve ser possível Ler uma rede referenciada;
+- [ ] Deve ser possível atribuir um hospital à um plano
+- [ ] Deve ser possível remover um hospital de um plano
+- [ ] Deve ser possível listar hospitais de um plano
 
 
 - [ ] Deve ser possível criar uma cotação
