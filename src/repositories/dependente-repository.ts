@@ -14,5 +14,5 @@ export interface DependenteRepository {
   create({ clienteId, data }: IDependenteCreateProps): Promise<Dependente>;
   findById(dependenteId: string): Promise<Dependente | null>
   delete(clientId: string, dependentId: string): Promise<void>
-  update(props: IUpdatedDependente, args: Omit<Prisma.DependenteUpdateArgs, 'where'>): Promise<Dependente>
+  update(props: IUpdatedDependente, args: Prisma.DependenteUpdateInput): Promise<Dependente>
 }

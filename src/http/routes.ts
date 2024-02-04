@@ -9,6 +9,7 @@ import { FindAllPlanos } from "./controllers/planos/findAllPlanos";
 import { registerCliente } from "./controllers/clientes/registerCliente";
 import { findClienteById } from "./controllers/clientes/findById";
 import { createDependentesController } from "./controllers/dependentes/create";
+import { updateDependentesController } from "./controllers/dependentes/update";
 
 
 
@@ -30,6 +31,7 @@ export async function appRoutes(app: FastifyInstance) {
   // dependentes
 
   app.post('/clientes/:clienteId/dependente', createDependentesController)
+  app.put('/dependente/:id', updateDependentesController)
   // Clientes
 
   app.post('/cliente', registerCliente)

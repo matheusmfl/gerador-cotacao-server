@@ -8,7 +8,7 @@ export class InMemoryDependente implements DependenteRepository {
   public items: Dependente[] = []
   public inMemoryCliente: InMemoryCliente = new InMemoryCliente()
 
-  async update(props: IUpdatedDependente, args: Prisma.DependenteUpdateArgs) {
+  async update(props: IUpdatedDependente, args: Prisma.DependenteUncheckedCreateInput) {
 
     const index = await this.items.findIndex((item) => item.id === props.id)
 
@@ -16,11 +16,11 @@ export class InMemoryDependente implements DependenteRepository {
 
 
     dependente = {
-      clienteId: args.data.clienteId as string,
+      clienteId: args.clienteId as string,
       id: props.id ?? randomUUID(),
-      nome: args.data.nome as string,
-      idade: args.data.idade as number,
-      preco: args.data.preco as number
+      nome: args.nome as string,
+      idade: args.idade as number,
+      preco: args.preco as number
     }
 
     return dependente

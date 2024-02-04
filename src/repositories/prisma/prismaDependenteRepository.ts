@@ -7,11 +7,13 @@ import { Prisma } from "@prisma/client";
 
 
 export class PrismaDependenteRepository implements DependenteRepository {
-  async update({ id, extraWhere }: IUpdatedDependente, args: Omit<Prisma.DependenteUpdateArgs, 'where'>) {
+  async update({ id, extraWhere }: IUpdatedDependente, args: Prisma.DependenteUncheckedCreateInput) {
 
     const updatedDependente = await prisma.dependente.update({
       where: { id, ...extraWhere },
-      ...args
+      data: {
+        ...args
+      }
     });
 
     return updatedDependente

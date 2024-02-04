@@ -5,9 +5,9 @@ import { Dependente } from "@prisma/client"
 
 interface IUpdateDependenteUseCaseRequest {
   id: string
-  name: string
-  idade: number
-  price: number
+  name?: string
+  idade?: number
+  price?: number
 }
 
 interface IUpdateDependenteUseCaseResponse {
@@ -30,9 +30,7 @@ export class UpdateDependenteUseCase {
     }
 
     const dependenteUpdated = await this.dependenteRepository.update({ id }, {
-      data: {
-        idade, nome: name, preco: price
-      }
+      nome: name, preco: price, idade
     })
 
 
