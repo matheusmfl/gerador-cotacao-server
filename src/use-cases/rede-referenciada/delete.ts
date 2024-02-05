@@ -36,7 +36,7 @@ export class DeleteRedeReferenciadaUseCase {
 
 
 
-    const rede_referenciada = await this.redeReferenciadaRepository.delete(planoId, hospitalId)
+    await this.redeReferenciadaRepository.delete(planoId, hospitalId)
 
     return
 
